@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <script>
+   function computerPlay(){
+   	var number = Math.floor(Math.random()*3);
+   	switch(number){
+   		case 0:
+   			return "paper";
+   		case 1:
+   			return "rock";
+   		default:
+   			return "scissor";	
+   	}
+   }
+   function playRound(playerSelection,computerSelection){
+   	if(playerSelection= 'rock'){
+   		switch(computerSelection){
+   			case "rock":
+   				tie++;
+   				return "You Tied, Both of you choose Rock";
+   			case "paper":
+   				lose++;
+   				return "You Lose! Paper beats Rock";
+   			default:
+   				wins++;
+   				return "You Win! Rock beats Scissors";
+   		}
+   	} else if(playerSelection= 'paper'){
+   		switch(computerSelection){
+   			case "rock":
+   				wins++;
+   				return "You Win! Paper beats Rocks";
+   			case "paper":
+   				tie++;
+   				return "You Tie! You both choose Paper";
+   			default:
+   				lose++;
+   				return "You Lose! Scissor beats Paper";
+   		}
+   	} else {
+   		switch(computerSelection){
+   			case "rock":
+   				lose++;
+   				return "You Lose! Paper beats Scissors";
+   			case "paper":
+   				wins++;
+   				return "You Win! Scissors beats Paper";
+   			default:
+   				tie++;
+   				return "You Tie! Both fo you choose Scissors";
+   		}
+   	}
+   }
+   function game(){
+   	var i;
+   	for(i=0; i<5; i++){
+   		var playerSelection= prompt("Please enter your paper,rock,or scissor");
+   		playerSelection=playerSelection.toLowerCase();
+   		var computerSelection= computerPlay();
+   		console.log(playRound(playerSelection,computerSelection));
+	}
+	if(wins>lose){
+		return "You've won against the computer";
+	} else if(lose>wins){
+		return "You've lost against the computer";
+	} else{
+		return "You've tied against the computer";
+	}
+   }
+   var wins;
+   var lose;
+   var tie;
+   console.log(game());
+   </script>
+</body>
+</html>
